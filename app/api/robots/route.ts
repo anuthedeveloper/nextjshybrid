@@ -12,5 +12,11 @@ export async function GET() {
     Sitemap: https://yourwebsite.com/sitemap.xml
   `;
 
-  return NextResponse.text(robotsTxt, { status: 200 });
+  // Return the response with correct headers for plain text
+  return new NextResponse(robotsTxt, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+  });
 }
